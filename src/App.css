@@ -1,0 +1,297 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* 이메일 미리보기 전용 스타일 */
+.email-preview-container {
+  /* 이메일 클라이언트 호환성을 위한 기본 스타일 */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  mso-table-lspace: 0pt;
+  mso-table-rspace: 0pt;
+}
+
+.email-preview-container * {
+  /* 모든 요소에 기본 폰트 적용 */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+.email-preview-container img {
+  /* 이미지 반응형 처리 */
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+  border: 0;
+  outline: none;
+  text-decoration: none;
+}
+
+.email-preview-container table {
+  /* 테이블 이메일 호환성 */
+  border-collapse: collapse !important;
+  mso-table-lspace: 0pt;
+  mso-table-rspace: 0pt;
+}
+
+/* 코드 하이라이팅 스타일 개선 */
+.email-preview-container pre {
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+}
+
+.email-preview-container code {
+  word-break: break-all !important;
+}
+
+/* 링크 호버 효과 */
+.email-preview-container a:hover {
+  color: #004499 !important;
+  border-bottom-color: #004499 !important;
+}
+
+/* 반응형 이메일 스타일 */
+@media only screen and (max-width: 600px) {
+  .email-preview-container {
+    padding: 10px !important;
+  }
+  
+  .email-preview-container h1 {
+    font-size: 24px !important;
+  }
+  
+  .email-preview-container h2 {
+    font-size: 20px !important;
+  }
+  
+  .email-preview-container h3 {
+    font-size: 18px !important;
+  }
+  
+  .email-preview-container table {
+    width: 100% !important;
+  }
+  
+  .email-preview-container td,
+  .email-preview-container th {
+    padding: 8px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* 편집기 스타일 개선 */
+.markdown-editor textarea {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace !important;
+  tab-size: 2;
+  -moz-tab-size: 2;
+}
+
+.markdown-editor textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* 스크롤바 스타일링 */
+.email-preview-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.email-preview-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.email-preview-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.email-preview-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 다크 모드에서 이메일 미리보기는 항상 라이트 모드 유지 */
+.dark .email-preview-container {
+  background-color: #ffffff !important;
+  color: #333333 !important;
+}
+
+.dark .email-preview-container * {
+  color: inherit !important;
+}
+
+/* 애니메이션 효과 */
+.email-preview-container {
+  transition: all 0.2s ease-in-out;
+}
+
+/* 복사 버튼 애니메이션 */
+@keyframes pulse-success {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.copy-success {
+  animation: pulse-success 0.3s ease-in-out;
+}
+
+/* 로딩 스피너 */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* 분할선 스타일 */
+.divider {
+  background: linear-gradient(90deg, transparent, #e1e5e9, transparent);
+  height: 1px;
+  border: none;
+  margin: 24px 0;
+}
+
+/* 툴팁 스타일 */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
